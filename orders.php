@@ -71,7 +71,7 @@ $orders = $order->get_orders();
                 <td><?php echo $order['name']; ?></td>
                 <td><?php echo $order['quantity']; ?></td>
                 <td><?php echo $order['size']; ?></td>
-                <td>$<?php echo $order['price']; ?></td>
+                <td><?php echo $order['price']; ?></td>
                 <td>
                     <img src="uploads/<?php echo htmlspecialchars($order['image']); ?>"
                          alt="<?php echo htmlspecialchars($order['name']); ?>">

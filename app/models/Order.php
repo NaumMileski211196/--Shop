@@ -1,5 +1,6 @@
 <?php
-require_once "app/models/Cart.php";
+require_once __DIR__ . "/Cart.php";
+require_once __DIR__ . "/../config/config.php";
 class Order extends Cart {
     protected $conn;
     public function __construct(){
@@ -49,6 +50,28 @@ class Order extends Cart {
         $stmt->bind_param('i', $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function get_admin_orders(){
+        $sql = "
+        SELECT 
+            o.order_id,
+            o.deliveryAddress,
+            o.created_at,
+            u.name AS user_name,
+            u.email,
+            oi.quantity,
+            p.image,
+            SUM(oi.quantity * p.price) AS total_price
+        FROM orders o
+        JOIN users u ON o.user_id = u.user_id
+        JOIN order_items oi ON o.order_id = oi.order_id
+        JOIN product p ON oi.product_id = p.product_id
+        GROUP BY o.order_id
+        ORDER BY o.created_at DESC
+    ";
+
+        $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

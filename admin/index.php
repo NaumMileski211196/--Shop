@@ -55,7 +55,7 @@ if($user->isLoggedIn() && $user->isAdmin()) :
                     </td>
 
                     <td>
-                        $<?= htmlspecialchars($product['price']); ?>
+                        <?= htmlspecialchars($product['price']); ?>
                     </td>
 
                     <td>
