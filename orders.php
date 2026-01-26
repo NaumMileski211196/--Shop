@@ -16,71 +16,61 @@ $orders = $order->get_orders();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Orders</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/style2.css">
 </head>
 <body>
-<nav>
-    <div class="nav-container">
-        <a href="#" class="logo">E-Shop</a>
-        <ul class="nav-menu">
-            <?php if(!$user->isLoggedIn()): ?>
-                <li>
-                    <a href="login.php">Login</a>
-                </li>
-                <li>
-                    <a href="register.php">Register</a>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="cart.php">Cart</a>
-                </li>
-                <li>
-                    <a href="orders.php">Orders</a>
-                </li>
-                <li>
-                    <a href="logout.php">Logout</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</nav>
 
-</body>
+<h2 class="page-title">Your Orders</h2>
 
 <div class="orders-wrapper">
-    <table class="orders-table">
-        <thead>
-        <tr>
-            <th>Order ID</th>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Size</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Delivery Address</th>
-            <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($orders as $order) : ?>
+    <div class="table-responsive">
+        <table class="orders-table">
+            <thead>
             <tr>
-                <td>#<?php echo $order['order_id']; ?></td>
-                <td><?php echo $order['name']; ?></td>
-                <td><?php echo $order['quantity']; ?></td>
-                <td><?php echo $order['size']; ?></td>
-                <td><?php echo $order['price']; ?></td>
-                <td>
-                    <img src="uploads/<?php echo htmlspecialchars($order['image']); ?>"
-                         alt="<?php echo htmlspecialchars($order['name']); ?>">
-                </td>
-                <td><?php echo $order['deliveryAddress']; ?></td>
-                <td><?php echo date("d M Y", strtotime($order['created_at'])); ?></td>
+                <th>Order ID</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Delivery Address</th>
+                <th>Date</th>
             </tr>
-        <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            <?php if(!empty($orders)) : ?>
+                <?php foreach ($orders as $order) : ?>
+                    <tr>
+                        <td>#<?= $order['order_id']; ?></td>
+                        <td><?= htmlspecialchars($order['name']); ?></td>
+                        <td><?= htmlspecialchars($order['quantity']); ?></td>
+                        <td><?= htmlspecialchars($order['size']); ?></td>
+                        <td>$<?= htmlspecialchars($order['price']); ?></td>
+                        <td>
+                            <img src="uploads/<?= htmlspecialchars($order['image']); ?>" alt="<?= htmlspecialchars($order['name']); ?>">
+                        </td>
+                        <td><?= htmlspecialchars($order['deliveryAddress']); ?></td>
+                        <td><?= date("d M Y", strtotime($order['created_at'])); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="8" class="text-center text-muted">You have no orders yet.</td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center">
+        <a href="index2.php#products" class="back-btn">← Back to Menu</a>
+    </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

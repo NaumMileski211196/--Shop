@@ -14,13 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $created = $user->create($name, $username, $email, $password);
 
     if($user->isLoggedIn()){
-        header("Location: index.php");
+        header("Location: index2.php");
         exit();
     }
     if($created){
         $_SESSION['message']['type'] = "success";
         $_SESSION['message']['text'] = "Register successful";
-        header("Location: index.php");
+        header("Location: index2.php");
         exit();
     }
     $_SESSION['message']['type'] = "danger";
@@ -37,20 +37,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/style2.css">
 </head>
 <body>
-<nav>
-    <div class="nav-container">
-    <a href="#" class="logo">E-Shop</a>
-
-    <ul class="nav-menu">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php">Register</a></li>
-    </ul>
-    </div>
-</nav>
 
 <div class="container">
     <?php if(isset($_SESSION['message'])) : ?>
@@ -62,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     <?php endif; ?>
 </div>
-<section class="register-section">
+<div class="register-page">
     <div class="register-container">
 
         <h1 class="register-title">Register</h1>
@@ -83,15 +72,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label for="email" class="label">Email</label>
                 <input type="email" id="email" name="email" class="input" required>
             </div>
+
             <div class="input-box">
                 <label for="password" class="label">Password</label>
                 <input type="password" id="password" name="password" class="input" required>
             </div>
+
             <button type="submit" class="btn">Register</button>
+
         </form>
 
+        <a href="login.php" class="esh-register-link">Already have an account? Login</a>
+
     </div>
-</section>
+
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

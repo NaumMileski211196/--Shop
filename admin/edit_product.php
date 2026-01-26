@@ -10,7 +10,7 @@ require_once "../app/models/Product.php";
 $user = new User();
 
 if (!$user->isLoggedIn() || !$user->isAdmin()) {
-    header("Location: ../index.php");
+    header("Location: ../index2.php");
     exit;
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $productObj->edit($product_id, $name, $price, $size, $filename);
 
-    header("Location: index.php");
+    header("Location: index-admin.php");
     exit;
 }
 ?>
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style2.css">
 </head>
 <body>
 

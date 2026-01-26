@@ -38,66 +38,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Buy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/style2.css">
 </head>
 <body>
-<nav>
-    <div class="nav-container">
-        <a href="#" class="logo">E-Shop</a>
+<div class="buy-page">
+    <form method="post" action="" class="order-container order-form">
+        <h2 class="order-title">Order Details</h2>
 
-        <ul class="nav-menu">
-            <?php if(!$user->isLoggedIn()): ?>
-                <li>
-                    <a href="login.php">Login</a>
-                </li>
-                <li>
-                    <a href="register.php">Register</a>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="cart.php">Cart</a>
-                </li>
-                <li>
-                    <a href="orders.php">Orders</a>
-                </li>
-                <li>
-                    <a href="logout.php">Logout</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</nav>
+        <?php if(isset($_SESSION['message'])) : ?>
+            <div class="alert alert-<?php echo $_SESSION['message']['type']; ?> alert-dismissible fade show">
+                <?php
+                echo $_SESSION['message']['text'];
+                unset($_SESSION['message']);
+                ?>
+            </div>
+        <?php endif; ?>
 
-<div class="container">
-    <?php if(isset($_SESSION['message'])) : ?>
-        <div class="alert alert-<?php echo $_SESSION['message']['type']; ?> alert-dismissible fade show">
-            <?php
-            echo $_SESSION['message']['text'];
-            unset($_SESSION['message']);
-            ?>
+        <div class="input-box">
+            <label class="label">Име и Презиме</label>
+            <input type="text" name="fullName" class="input" required>
         </div>
-    <?php endif; ?>
+
+        <div class="input-box">
+            <label class="label">Адреса</label>
+            <input type="text" name="address" class="input" required>
+        </div>
+
+        <div class="input-box">
+            <label class="label">Телефонски Број</label>
+            <input type="text" name="phone" class="input" required>
+        </div>
+
+        <button type="submit" class="btn">Order</button>
+    </form>
 </div>
-<form method="post" action="" class="order-form">
-    <h2 class="page-title">Order Details</h2>
-
-    <div class="input-box">
-        <label class="label">Име и Презиме</label>
-        <input type="text" name="fullName" class="input" required>
-    </div>
-
-    <div class="input-box">
-        <label class="label">Адреса</label>
-        <input type="text" name="address" class="input" required>
-    </div>
-
-    <div class="input-box">
-        <label class="label">Телефонски Број</label>
-        <input type="text" name="phone" class="input" required>
-    </div>
-
-    <button type="submit" class="btn">Order</button>
-</form>
 
 
 </body>

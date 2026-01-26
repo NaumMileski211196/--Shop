@@ -26,7 +26,7 @@ if($user->isLoggedIn() && $user->isAdmin()):
 
         $productObj->create($name, $price, $size, $image);
 
-        header('Location: index.php');
+        header('Location: index2.php');
         exit();
     }
 endif;
@@ -36,9 +36,7 @@ endif;
 <head>
     <meta charset="UTF-8">
     <title>Add Product</title>
-    <link rel="stylesheet" href="../public/css/style.css">
-
-
+    <link rel="stylesheet" href="../public/css/style2.css">
 </head>
 <body>
 <div class="product-form-wrapper">

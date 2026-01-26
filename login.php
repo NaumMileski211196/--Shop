@@ -11,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $result = $user->login($username, $password);
 
     if($user->isLoggedIn()){
-        header("Location: index.php");
+        header("Location: index2.php");
         exit();
     }
 
@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         header("Location: login.php");
         exit();
     }
-    header("Location: index.php");
+    header("Location: index2.php");
     exit();
 }
 ?>
@@ -32,20 +32,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Page</title>
     <link href="https://cdn.misdeliver.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/style2.css">
 </head>
 <body>
-<nav>
-    <div class="nav-container">
-    <a href="index.php" class="logo">E-Shop</a>
 
-    <ul class="nav-menu">
-        <li><a href="index.php">Home</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="register.php">Register</a></li>
-    </ul>
-    </div>
-</nav>
 
 <div class="container">
     <?php if(isset($_SESSION['message'])) : ?>
@@ -57,25 +47,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         </div>
     <?php endif; ?>
 </div>
-<div class="login-container">
-    <h1 class="login-title">Login</h1>
+<div class="login-page">
 
-    <form method="POST" action="" class="login-form">
+    <div class="login-container">
+        <h1 class="login-title">Login</h1>
 
-        <div class="input-box">
-            <label for="username" class="label">Username</label>
-            <input type="text" id="username" name="username" class="input" required>
-        </div>
+        <form method="POST" action="" class="login-form">
 
-        <div class="input-box">
-            <label for="password" class="label">Password</label>
-            <input type="password" id="password" name="password" class="input" required>
-        </div>
+            <div class="input-box">
+                <label for="username" class="label">Username</label>
+                <input type="text" id="username" name="username" class="input" required>
+            </div>
 
-        <button type="submit" class="btn">Login</button>
+            <div class="input-box">
+                <label for="password" class="label">Password</label>
+                <input type="password" id="password" name="password" class="input" required>
+            </div>
 
-    </form>
-    <a href="register.php" class="esh-register-link">Register here</a>
+            <button type="submit" class="btn">Login</button>
+
+        </form>
+        <a href="register.php" class="esh-register-link">Register here</a>
+    </div>
 
 </div>
 </body>
