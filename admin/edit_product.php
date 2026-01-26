@@ -62,42 +62,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<div class="product-form-wrapper">
-    <h2 class="form-title">Edit Product</h2>
+<div class="admin-wrapper">
+    <div class="product-form-wrapper">
+        <h2 class="form-title">Edit Product</h2>
 
-    <form method="POST" enctype="multipart/form-data" class="admin-product-form">
+        <form method="POST" enctype="multipart/form-data" class="admin-product-form">
 
-        <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
+            <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" value="<?= htmlspecialchars($product['name']) ?>" required>
-        </div>
-
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" name="price" id="price" value="<?= htmlspecialchars($product['price']) ?>" required>
-        </div>
-
-        <div class="form-group">
-            <label for="size">Size</label>
-            <input type="text" name="size" id="size" value="<?= htmlspecialchars($product['size']) ?>" required>
-        </div>
-
-        <div class="form-group">
-            <label for="image">Change Image</label>
-            <input type="file" name="image" id="image">
-        </div>
-
-        <?php if (!empty($product['image'])): ?>
-            <div class="current-image">
-                <p>Current Image</p>
-                <img src="../uploads/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" name="name" id="name" value="<?= htmlspecialchars($product['name']) ?>" required>
             </div>
-        <?php endif; ?>
 
-        <button type="submit" class="btn-primary">Update Product</button>
-    </form>
+            <div class="form-group">
+                <label for="price">Price ($)</label>
+                <input type="number" name="price" id="price" value="<?= htmlspecialchars($product['price']) ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="size">Size</label>
+                <input type="text" name="size" id="size" value="<?= htmlspecialchars($product['size']) ?>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Change Image</label>
+                <input type="file" name="image" id="image">
+            </div>
+
+            <?php if (!empty($product['image'])): ?>
+                <div class="current-image">
+                    <p>Current Image:</p>
+                    <img src="../uploads/<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                </div>
+            <?php endif; ?>
+
+            <button type="submit" class="btn-primary">Update Product</button>
+        </form>
+    </div>
 </div>
 
 </body>

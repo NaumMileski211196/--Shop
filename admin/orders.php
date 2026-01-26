@@ -19,7 +19,7 @@ $orders = $order->get_admin_orders();
 <head>
     <meta charset="UTF-8">
     <title>Admin Orders</title>
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style2.css">
 </head>
 <body>
 

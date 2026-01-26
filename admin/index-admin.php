@@ -22,75 +22,50 @@ if($user->isLoggedIn() && $user->isAdmin()) :
 </head>
 <body>
 
-<div class="container mt-5">
+<div class="admin-container mt-5">
 
-
-    <div class="text-end mb-3">
-        <a href="add_product.php" class="btn btn-primary px-4">
-            + Add Product
-        </a>
+    <div class="header mb-4 d-flex justify-content-between align-items-center">
+        <a href="add_product.php" class="btn btn-primary px-4">+ Add Product</a>
     </div>
 
     <div class="table-responsive">
-        <table class="table table-striped align-middle">
+        <table class="table custom-table table-hover align-middle">
             <thead>
             <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Price</th>
+                <th>Price ($)</th>
                 <th>Size</th>
                 <th>Image</th>
                 <th>Created</th>
                 <th>Actions</th>
             </tr>
             </thead>
-
             <tbody>
             <?php foreach ($products as $product): ?>
                 <tr>
                     <td><?= $product['product_id']; ?></td>
-
-                    <td class="fw-semibold">
-                        <?= htmlspecialchars($product['name']); ?>
-                    </td>
-
-                    <td>
-                        <?= htmlspecialchars($product['price']); ?>
-                    </td>
-
-                    <td>
-                        <?= htmlspecialchars($product['size']); ?>
-                    </td>
-
+                    <td class="fw-semibold"><?= htmlspecialchars($product['name']); ?></td>
+                    <td><?= htmlspecialchars($product['price']); ?></td>
+                    <td><?= htmlspecialchars($product['size']); ?></td>
                     <td>
                         <img src="../uploads/<?= htmlspecialchars($product['image']); ?>"
                              alt="<?= htmlspecialchars($product['name']); ?>"
-                             width="70"
-                             class="rounded shadow-sm">
+                             class="product-thumb">
                     </td>
-
-                    <td>
-                        <?= $product['created_at']; ?>
-                    </td>
-
+                    <td><?= $product['created_at']; ?></td>
                     <td>
                         <div class="d-flex gap-2 justify-content-center">
                             <a href="edit_product.php?product_id=<?= $product['product_id'] ?>"
-                               class="btn btn-sm btn-warning">
-                                Edit
-                            </a>
-
+                               class="btn btn-sm btn-warning">Edit</a>
                             <a href="delete_product.php?product_id=<?= $product['product_id']; ?>"
                                class="btn btn-sm btn-danger"
-                               onclick="return confirm('Are you sure?')">
-                                Delete
-                            </a>
+                               >Delete</a>
                         </div>
                     </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
-
         </table>
     </div>
 

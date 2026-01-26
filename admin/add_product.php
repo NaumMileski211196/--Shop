@@ -26,7 +26,7 @@ if($user->isLoggedIn() && $user->isAdmin()):
 
         $productObj->create($name, $price, $size, $image);
 
-        header('Location: index2.php');
+        header('Location: index-admin.php');
         exit();
     }
 endif;
@@ -39,34 +39,37 @@ endif;
     <link rel="stylesheet" href="../public/css/style2.css">
 </head>
 <body>
-<div class="product-form-wrapper">
-    <h2 class="form-title">Add Product</h2>
+<div class="admin-wrapper">
+    <div class="product-form-wrapper">
+        <h2 class="form-title">Add New Product</h2>
 
-    <form method="POST" enctype="multipart/form-data" class="admin-product-form">
+        <form method="POST" enctype="multipart/form-data" class="admin-product-form">
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
-        </div>
+            <div class="form-group">
+                <label for="name">Product Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter product name" required>
+            </div>
 
-        <div class="form-group">
-            <label for="price">Price</label>
-            <input type="text" name="price" id="price" required>
-        </div>
+            <div class="form-group">
+                <label for="price">Price ($)</label>
+                <input type="number" name="price" id="price" placeholder="Enter price" required>
+            </div>
 
-        <div class="form-group">
-            <label for="size">Size</label>
-            <input type="text" name="size" id="size" required>
-        </div>
+            <div class="form-group">
+                <label for="size">Size</label>
+                <input type="text" name="size" id="size" placeholder="Enter size" required>
+            </div>
 
-        <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" name="image" id="image" required>
-        </div>
+            <div class="form-group">
+                <label for="image">Product Image</label>
+                <input type="file" name="image" id="image" required>
+            </div>
 
-        <button type="submit" class="btn-primary">Add Product</button>
-    </form>
+            <button type="submit" class="btn-primary">Add Product</button>
+        </form>
+    </div>
 </div>
+
 
 </body>
 </html>
