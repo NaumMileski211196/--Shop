@@ -86,7 +86,7 @@ if ($search !== '') {
         <p>Check out our delicious products below!</p>
         <form method="GET" action="" class="d-flex justify-content-center mb-3">
             <input type="text" name="search" class="form-control w-25" placeholder="Search products by name..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
-            <button type="submit" class="btn btn-primary btn-sm ms-2">Search</button>
+            <button type="submit" class="btn search btn-sm ms-2">Search</button>
         </form>
 
     </div>
